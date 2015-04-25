@@ -1,0 +1,108 @@
+@import "common/normalize.less";
+@import "common/mixings.less";
+
+.font('proximanovathin', '../font/proximanovathin');
+
+@proximanovathin: proximanovathin, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@grid: 					20px;
+
+@base-font-family: 		@proximanovathin;
+@base-line-height:      1.14;
+
+@base-font-size:        20px;
+@medium-font-size:      40px;
+
+@medium:     			~"only screen and (min-width : 415px) and (min-height: 415px)";
+
+html, body {height: 100%;}
+
+body {
+	font: @base-font-size @base-font-family;
+	line-height: @base-line-height;
+	color: #B2BBBF;
+	background: #fff;
+
+	@media @medium {
+		font-size: @medium-font-size;
+	}
+}
+
+a {
+	-webkit-tap-highlight-color: transparent;
+}
+
+h1 {
+	margin-top: -1em;
+	font-weight: normal;
+	text-transform: uppercase;
+	position: relative;
+	font-size: 1.5em;
+
+	@media @medium {
+		font-size: 1.75em;
+	}
+
+	&:before, &:after {
+		content: "I";
+		position: absolute;
+		left: 50%;
+		margin-left: -0.1em;
+	}
+
+	&:before { top: -1em; }
+	&:after { bottom: -1em; }
+}
+
+.table {
+  	display: table;
+  	width: 100%;
+}
+
+.cell {
+  	display: table-cell !important;
+  	vertical-align: middle;
+  	text-align: center;
+}
+
+footer {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	left: 0;
+	bottom: @grid;
+
+	@media @medium {
+		bottom: 2*@grid;
+	}
+}
+
+
+a {
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    visibility: hidden;
+    transform: scaleX(0);
+    background: #B2BBBF;
+    .transition(all, 300ms);
+  }
+
+  &:link, &:visited {
+    color: #B2BBBF;
+  }
+
+  &:hover, &:focus {
+    &:before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+  }
+}
